@@ -1,5 +1,5 @@
 {
-    "name": "Javierfernandez93/metaapi-cloud-php-sdk",
+    "name": "javierfernandez93/metaapi-cloud-php-sdk",
     "description": "PHP SDK for MetaApi, a professional cloud forex API",
     "keywords": [
         "MetaApi",
@@ -7,7 +7,7 @@
         "php-metaapi-sdk"
     ],
     "type": "library",
-    "homepage": "https://github.com/Javierfernandez93/metaapi-cloud-php-sdk",
+    "homepage": "https://github.com/javierfernandez93/metaapi-cloud-php-sdk",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -29,7 +29,7 @@
         {
             "name": "Javier Fernandez",
             "email": "javier.fernandez.pa93@gmail.com",
-            "homepage": "https://github.com/Javierfernandez93/metaapi-cloud-php-sdk",
+            "homepage": "https://github.com/javierfernandez93/metaapi-cloud-php-sdk",
             "role": "Developer"
         }
     ],
