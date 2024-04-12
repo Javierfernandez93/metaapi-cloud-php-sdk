@@ -8,16 +8,39 @@ trait CopyTrade
 {
     use Configuration;
 
-    /*
-    *   Create actual copy trade in metaapi.cloud
-    */
-    public function copy(string $providerAccount, string $subscriberAccount, string $strategyId = null): array|string
+    public function logs(string $strategyId = null): array|string
+    {
+        return $this->http->get("/users/current/strategies/{$strategyId}/user-log");
+    }
+
+    public function suscribers(): array|string
+    {
+        return $this->http->get("/users/current/configuration/subscribers");
+    }
+    
+    public function removeSuscription(string $id = null,string $strategyId = null,array $data = null): array|string
+    {
+        return $this->http->delete("/users/current/configuration/subscribers/{$id}/subscriptions/{$strategyId}",$data);
+    }
+
+    public function stream(string $subscriberId = null): array|string
+    {
+        return $this->http->get("/users/current/subscribers/{$subscriberId}/transactions/stream");
+    }
+
+    public function suscriber(string $id = null): array|string
+    {
+        return $this->http->get("/users/current/configuration/subscribers/{$id}");
+    }
+
+    public function copy(string $providerAccount, string $subscriberAccount, string $strategyId = null,string $name = null,float $multiplier = null): array|string
     {
         try {
             $account = new AccountApi($this->token);
 
             $masterMetaapiAccount = $account->readById($providerAccount);
             $slaveMetaapiAccount = $account->readById($subscriberAccount);
+
 
             if (!in_array('PROVIDER', $masterMetaapiAccount['copyFactoryRoles'])) {
                 $response = "{'message': 'Account {$providerAccount} is not a provider account. Please specify PROVIDER copyFactoryRoles value in your MetaApi account in order to use it in CopyFactory API'}";
@@ -51,19 +74,19 @@ trait CopyTrade
             }
 
             // create a strategy being copied
-            $this->http->put("/users/current/configuration/strategies/{$strategyId}", [
-                'name'        => 'Test strategy',
-                'description' => 'Some useful description about your strategy',
-                'accountId'   => $masterMetaapiAccount['_id'],
-            ]);
+            // $this->http->put("/users/current/configuration/strategies/{$strategyId}", [
+            //     'name'        => 'Test strategy',
+            //     'description' => 'Some useful description about your strategy',
+            //     'accountId'   => $masterMetaapiAccount['_id'],
+            // ]);
 
             // create subscriber
             $this->updateSubscriber($slaveMetaapiAccount['_id'], [
-                'name'          => 'Copy Trade Subscriber',
+                'name' => $name,
                 'subscriptions' => [
                     [
                         'strategyId' => $strategyId,
-                        'multiplier' => 1,
+                        'multiplier' => $multiplier,
                     ],
                 ],
             ]);
