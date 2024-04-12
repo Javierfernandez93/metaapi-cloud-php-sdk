@@ -1,5 +1,5 @@
 {
-    "name": "victorycodedev/metaapi-cloud-php-sdk",
+    "name": "Javierfernandez93/metaapi-cloud-php-sdk",
     "description": "PHP SDK for MetaApi, a professional cloud forex API",
     "keywords": [
         "MetaApi",
@@ -7,7 +7,7 @@
         "php-metaapi-sdk"
     ],
     "type": "library",
-    "homepage": "https://github.com/victorycodedev/metaapi-cloud-php-sdk",
+    "homepage": "https://github.com/Javierfernandez93/metaapi-cloud-php-sdk",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -19,12 +19,20 @@
             "Victorycodedev\\MetaapiCloudPhpSdk\\Tests\\": "tests"
         }
     },
-    "authors": [{
-        "name": "Efekpogua Victory",
-        "email": "victrinhoj@gmail.com",
-        "homepage": "https://github.com/victorycodedev/metaapi-cloud-php-sdk",
-        "role": "Developer"
-    }],
+    "authors": [
+            {
+            "name": "Efekpogua Victory",
+            "email": "victrinhoj@gmail.com",
+            "homepage": "https://github.com/victorycodedev/metaapi-cloud-php-sdk",
+            "role": "Developer"
+        },
+        {
+            "name": "Javier Fernandez",
+            "email": "javier.fernandez.pa93@gmail.com",
+            "homepage": "https://github.com/Javierfernandez93/metaapi-cloud-php-sdk",
+            "role": "Developer"
+        }
+    ],
     "minimum-stability": "stable",
     "require": {
         "php": "^8.1|^8.2",
